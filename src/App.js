@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
 
+import { AiOutlinePlus } from 'react-icons/ai'
+import Todo from './Todo'
+
+const style = {
+  bg: `h-screen w-screen p-4 bg-gradient-tor from-[#2F80ED] to-[#1CB5E0]`,
+}
 function App() {
+  const [todos, setTodos] = useState([
+    'Learn codes',
+    'Build projects',
+    'Get job',
+  ])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <h3 className="heading">Todo App</h3>
+        <form className="form">
+          <input type="text" placeholder="Add Todo" />
+          <button>
+            <AiOutlinePlus size={30} style={{ background: 'none' }} />
+          </button>
+        </form>
+        <ul className="list">
+          {todos.map((todo, index) => (
+            <Todo key={index} todo={todo} />
+          ))}
+        </ul>
+        <p className="todo-count">You have 3 todos</p>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
