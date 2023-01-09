@@ -33,17 +33,17 @@ const Dashboard = () => {
   }
 
   // read
-  // useEffect(() => {
-  //   const q = query(collection(db, 'users' + user.uid))
-  //   const unsubscribe = onSnapshot(q, (querySnapshot) => {
-  //     let todoArr = []
-  //     querySnapshot.forEach((doc) => {
-  //       todoArr.push({ ...doc.data, id: doc.id })
-  //     })
-  //     setTodos(todoArr)
-  //   })
-  //   return () => unsubscribe()
-  // }, [])
+  useEffect(() => {
+    const q = query(collection(db, 'users'))
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let todoArr = []
+      querySnapshot.forEach((doc) => {
+        todoArr.push({ ...doc.data, id: doc.id })
+      })
+      setTodos(todoArr)
+    })
+    return () => unsubscribe()
+  }, [])
   // update
   // delete
   return (
