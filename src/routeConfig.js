@@ -1,11 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Dashboard from './pages/Dashboard'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
 import ErrorPage from './pages/ErrorPage'
 import ProtectedRoutes from './auth/ProtectedRoute'
 import PublicRoutes from './auth/PublicRoute'
+import LoginAndSignup from './pages/LoginAndSignup'
 import App from './App'
+import HomePage from './pages/HomePage'
 
 const routeConfig = createBrowserRouter([
   {
@@ -17,14 +16,18 @@ const routeConfig = createBrowserRouter([
         path: '',
         element: <PublicRoutes />,
         children: [
-          { index: true, element: <Login /> },
+          { index: true, element: <LoginAndSignup /> },
           {
             path: 'login',
-            element: <Login />,
+            element: <LoginAndSignup />,
           },
           {
             path: 'signup',
-            element: <Signup />,
+            element: <LoginAndSignup />,
+          },
+          {
+            path: 'home',
+            element: <HomePage />,
           },
         ],
       },
@@ -32,10 +35,10 @@ const routeConfig = createBrowserRouter([
         path: '',
         element: <ProtectedRoutes />,
         children: [
-          { index: true, element: <Dashboard /> },
+          { index: true, element: <HomePage /> },
           {
             path: 'dashboard',
-            element: <Dashboard />,
+            element: <HomePage />,
           },
         ],
       },

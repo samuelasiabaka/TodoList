@@ -44,11 +44,27 @@ export const register = async (formData, user) => {
     uid: user.uid,
     username: username,
     createdAt: serverTimestamp(),
-    todoList: ['Learn Code', 'Build Projects', 'Get a job'],
   }
   return await setDoc(doc(db, 'users', user.uid), data)
     .then((doc) => {
       console.log('Document has been added to database')
+      console.log(doc)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+// add item to todoList
+export const createListItem = async (item, user) => {
+  const itemRef = doc(db, 'users', user.uid, 'todoList', 'listItems')
+  const data = {
+    text: item,
+    completed: false,
+  }
+  return await setDoc(itemRef, data)
+    .then((doc) => {
+      console.log('New todo list item has been added to database')
       console.log(doc)
     })
     .catch((error) => {

@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: REACT_APP_FIREBASE_KEY,
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: 'todo-app-fbdca.firebaseapp.com',
   projectId: 'todo-app-fbdca',
   storageBucket: 'todo-app-fbdca.appspot.com',

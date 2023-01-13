@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import { signOutUser } from '../services/firebaseServices'
 import Todo from '../components/Todo'
 import { useUserAuth } from '../context/UserAuthContext'
-import { useEffect } from 'react'
-import { collection, onSnapshot, query, addDoc } from 'firebase/firestore'
+import {
+  collection,
+  onSnapshot,
+  query,
+  addDoc,
+  doc,
+  getDocs,
+} from 'firebase/firestore'
 import { db } from '../firebaseConfig'
+import { createListItem } from '../services/firebaseServices'
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -19,31 +26,17 @@ const Dashboard = () => {
   }
 
   // write
-  const addItem = async (item, user) => {
-    const itemRef = collection(db, 'user', user.uid, 'listItem')
-    console.log(item)
-    return await addDoc(itemRef, item)
-      .then((data) => {
-        console.log('item has been added to database')
-        console.log(data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  const addItem = async (e) => {
+    e.preventDefault()
+    if (item === '') {
+      alert('Please enter a valid todo')
+      return
+    }
+    setItem('')
+    await createListItem(item, user)
   }
 
   // read
-  useEffect(() => {
-    const q = query(collection(db, 'users'))
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      let todoArr = []
-      querySnapshot.forEach((doc) => {
-        todoArr.push({ ...doc.data, id: doc.id })
-      })
-      setTodos(todoArr)
-    })
-    return () => unsubscribe()
-  }, [])
   // update
   // delete
   return (
@@ -78,3 +71,17 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+
+// useEffect(() => {
+//     const listRef = doc(db, 'users', user.uid, 'todoList', 'listItems')
+//     const q = query(listRef)
+//     const unsubscribe = onSnapshot(q, (querySnapshot) => {
+//       let todoArr = []
+//       // querySnapshot.forEach((doc) => {
+//       //   todoArr.push({ ...doc.data(), id: doc.id })
+//       // })
+//       console.log(querySnapshot)
+//       setTodos(todoArr)
+//     })
+//     return () => unsubscribe()
+//   }, [])
