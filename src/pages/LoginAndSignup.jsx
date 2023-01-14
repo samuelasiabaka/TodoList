@@ -4,7 +4,6 @@ import { updateProfile } from 'firebase/auth'
 import {
   createAccountWithEmailAndPassword,
   signInUser,
-  register,
 } from '../services/firebaseServices'
 import { customError } from '../common/firebase-error'
 import './loginsignp.css'
@@ -58,7 +57,6 @@ const LoginAndSignup = () => {
         displayName: formData.username,
       })
       if (user) {
-        register(formData, user)
         navigate('/dashboard')
       }
     } catch (error) {
@@ -74,7 +72,6 @@ const LoginAndSignup = () => {
         id="container"
       >
         <div className="form-container sign-up-container">
-          SIGN UP
           <form onSubmit={handleSignUp}>
             <h1>Create Account</h1>
             <input

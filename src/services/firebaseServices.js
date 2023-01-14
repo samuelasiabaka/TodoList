@@ -36,24 +36,24 @@ export const signOutUser = async () => {
 }
 
 // add user to database
-export const register = async (formData, user) => {
-  //   const dbRef = collection(db, 'users')
-  const { username, email } = formData
-  const data = {
-    email: email,
-    uid: user.uid,
-    username: username,
-    createdAt: serverTimestamp(),
-  }
-  return await setDoc(doc(db, 'users', user.uid), data)
-    .then((doc) => {
-      console.log('Document has been added to database')
-      console.log(doc)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-}
+// export const register = async (formData, user) => {
+//   //   const dbRef = collection(db, 'users')
+//   const { username, email } = formData
+//   const data = {
+//     email: email,
+//     uid: user.uid,
+//     username: username,
+//     createdAt: serverTimestamp(),
+//   }
+//   return await setDoc(doc(db, 'users', user.uid), data)
+//     .then((doc) => {
+//       console.log('Document has been added to database')
+//       console.log(doc)
+//     })
+//     .catch((error) => {
+//       console.log(error)
+//     })
+// }
 
 // add item to todoList
 export const createListItem = async (item, user) => {
