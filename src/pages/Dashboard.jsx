@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { signOutUser } from '../services/firebaseServices'
-import addIcon from '../assests/add-icon.svg'
 import deleteIcon from '../assests/delete-icon.png'
 import updateIcon from '../assests/update-icon.svg'
 import { useUserAuth } from '../context/UserAuthContext'
@@ -19,15 +18,15 @@ import {
   deleteDoc,
 } from 'firebase/firestore'
 import { uid } from 'uid'
+import '../styles/home.css'
 
-const Dashboard = () => {
+const Home = () => {
   const { user } = useUserAuth()
   const navigate = useNavigate()
   const [todo, setTodo] = useState('')
   const [todos, setTodos] = useState([])
   const [isEdit, setIsEdit] = useState(false)
   const [tempUidd, setTempUidd] = useState('')
-  const [inputError, setInputError] = useState('')
 
   useEffect(() => {
     // READ
@@ -57,13 +56,9 @@ const Dashboard = () => {
       todo: todo,
       uidd: uidd,
       createdAt: serverTimestamp(),
+    }).catch((error) => {
+      console.log(error)
     })
-      .then((doc) => {
-        console.log(doc)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
   }
 
   // UPDATE
@@ -94,43 +89,49 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="dashboard-container">
-      <h1> Hi {user.displayName}</h1>
-      <div className="tasks-body">
-        <div className="input-task-container">
-          <div className="email-container">
-            <input
-              type="text"
-              className="email-input"
-              placeholder="add todo"
-              value={todo}
-              onChange={(e) => {
-                setTodo(e.target.value)
-              }}
-            />
-          </div>
-          <div className="button-container">
-            {isEdit ? (
-              <button className="add-task-btn" onClick={handleEdit}>
-                <img src={updateIcon} alt="add icon" height={30} />
-              </button>
-            ) : (
-              <button className="add-task-btn" onClick={addTodo}>
-                <img src={addIcon} alt="add icon" height={30} />
-              </button>
-            )}
-          </div>
+    <>
+      <div className="todo-container">
+        <div className="main-heading">
+          <h1>Todo List</h1>
         </div>
-        <div className="tasks-container">
-          <h4 className="tasks-heading">All Tasks</h4>
-          <hr />
-          <div>
-            {todos.map((todo) => (
-              <div className="task-item" key={todo.uidd}>
-                <input type="checkbox" name="" id="" />
-                <div className="todo-list-item">
-                  <p>{todo.todo}</p>
-                </div>
+        <h4>Hello {user.displayName}, welcome back</h4>
+        <div className="form">
+          <input
+            type="text"
+            className="input"
+            value={todo}
+            required
+            onChange={(e) => {
+              setTodo(e.target.value)
+            }}
+          />
+          {isEdit ? (
+            <input
+              type="submit"
+              className="add"
+              value="Update Task"
+              onClick={handleEdit}
+            />
+          ) : (
+            <input
+              type="submit"
+              className="add"
+              value="Add Task"
+              onClick={addTodo}
+            />
+          )}
+        </div>
+        <div>
+          {todos.map((todo) => (
+            <div className="tasks" key={todo.uidd}>
+              <div className="task-list-item">
+                <input
+                  type="checkbox"
+                  className="task-checkbox"
+                  placeholder="add todo"
+                />
+
+                <p className="task-text">{todo.todo}</p>
 
                 <div className="task-item-btn">
                   <button
@@ -147,17 +148,20 @@ const Dashboard = () => {
                   </button>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-        <div className="button-container">
-          <button className="login-btn" onClick={handleLogout}>
-            SIGN Out
-          </button>
+        <div className="signout-btn">
+          <input
+            type="submit"
+            className="add"
+            value="Sign out"
+            onClick={handleLogout}
+          />
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
-export default Dashboard
+export default Home

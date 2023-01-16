@@ -117,7 +117,7 @@ const LoginAndSignUp = () => {
                   />
                 </div>
                 <div className="text">
-                  <a href="#">Forgot password?</a>
+                  <Link>Forgot password?</Link>
                 </div>
                 <div className="button input-box">
                   <input type="submit" value="Sumbit" />
