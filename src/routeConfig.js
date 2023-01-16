@@ -2,9 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './pages/ErrorPage'
 import ProtectedRoutes from './auth/ProtectedRoute'
 import PublicRoutes from './auth/PublicRoute'
-// import LoginAndSignup from './pages/LoginAndSignup'
-import Login from './pages/Login'
-import Register from './pages/Register'
+import LoginAndSignUp from './pages/LoginAndSignUp'
 import Dashboard from './pages/Dashboard'
 import App from './App'
 
@@ -18,14 +16,10 @@ const routeConfig = createBrowserRouter([
         path: '',
         element: <PublicRoutes />,
         children: [
-          { index: true, element: <Login /> },
+          { index: true, element: <LoginAndSignUp /> },
           {
             path: 'login',
-            element: <Login />,
-          },
-          {
-            path: 'register',
-            element: <Register />,
+            element: <LoginAndSignUp />,
           },
         ],
       },

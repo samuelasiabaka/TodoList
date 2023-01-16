@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import errorIcon from '../assests/error-icon.png'
-import '../styles/error-page.scss'
 
 const ErrorPage = () => {
   const navigate = useNavigate()
