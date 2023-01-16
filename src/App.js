@@ -7,8 +7,6 @@ function App() {
     <UserAuthContextProvider>
       <div className="App">
         <div className="container">
-          {/* <h3 className="heading">Todo App</h3> */}
-          {/* <Signup /> */}
           <Outlet />
         </div>
       </div>

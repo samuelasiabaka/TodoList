@@ -1,94 +1,11 @@
-// body {
-//   margin: 0;
-//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-//     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-//     sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-
-//   color: white;
-//   width: 100%;
-//   height: 100vh;
-// }
-// code {
-//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-//     monospace;
-// }
-
-// .App {
-//   margin-top: 30px;
-//   .container {
-//     background: slategray;
-//     max-width: 500px;
-//     border-radius: 5px;
-//     padding: 10px;
-//     margin: auto;
-
-//     .heading {
-//       font-size: xx-large;
-//       font-weight: bold;
-//       text-align: center;
-//     }
-
-//     .form {
-//       display: flex;
-//       justify-content: space-between;
-//       input {
-//         width: 100%;
-//         font-size: x-large;
-//         border: 1px solid;
-//         padding: 2px;
-//       }
-//       button {
-//         border: 1px solid;
-//         margin-left: 2px;
-//         padding: 4px;
-//         // background: purple;
-//       }
-//     }
-//     .list {
-//       padding-left: 0;
-//     }
-//     .todo-count {
-//       text-align: center;
-//     }
-//   }
-// }
-
-// .todo-list {
-//   display: flex;
-//   justify-content: space-between;
-//   background: gray;
-//   padding: 4px;
-//   margin: 2px 0;
-//   text-transform: capitalize;
-//   buttton {
-//     cursor: pointer;
-//     display: flex;
-//     align-items: center;
-//   }
-
-//   .row {
-//     display: flex;
-//   }
-
-//   .todo-text {
-//     margin-left: 2px;
-//     cursor: pointer;
-//   }
-
-//   .todo-text-complete {
-//     margin-left: 2px;
-//     cursor: pointer;
-//     text-decoration: line-through;
-//   }
-// }
-
-// .todo-list-complete {
-//   display: flex;
-//   justify-content: space-between;
-//   background: gray;
-//   padding: 4px;
-//   margin: 2px 0;
-//   text-transform: capitalize;
-// }
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgba(211, 121, 225, 0.1);
+}

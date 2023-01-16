@@ -1,0 +1,19 @@
+// Error Page
+.error-container {
+  //   background: rgba(211, 121, 225, 0.1);
+  text-align: center;
+}
+.error-text {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44px;
+  /* identical to box height */
+
+  color: #000000;
+}
+.error-btn {
+  background: rgba(245, 53, 238, 0.8);
+  border-radius: 8px;
+}

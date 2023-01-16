@@ -2,9 +2,11 @@ import { createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './pages/ErrorPage'
 import ProtectedRoutes from './auth/ProtectedRoute'
 import PublicRoutes from './auth/PublicRoute'
-import LoginAndSignup from './pages/LoginAndSignup'
+// import LoginAndSignup from './pages/LoginAndSignup'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Dashboard from './pages/Dashboard'
 import App from './App'
-import HomePage from './pages/HomePage'
 
 const routeConfig = createBrowserRouter([
   {
@@ -16,18 +18,14 @@ const routeConfig = createBrowserRouter([
         path: '',
         element: <PublicRoutes />,
         children: [
-          { index: true, element: <LoginAndSignup /> },
+          { index: true, element: <Login /> },
           {
             path: 'login',
-            element: <LoginAndSignup />,
+            element: <Login />,
           },
           {
-            path: 'signup',
-            element: <LoginAndSignup />,
-          },
-          {
-            path: 'home',
-            element: <HomePage />,
+            path: 'register',
+            element: <Register />,
           },
         ],
       },
@@ -35,10 +33,10 @@ const routeConfig = createBrowserRouter([
         path: '',
         element: <ProtectedRoutes />,
         children: [
-          { index: true, element: <HomePage /> },
+          { index: true, element: <Dashboard /> },
           {
             path: 'dashboard',
-            element: <HomePage />,
+            element: <Dashboard />,
           },
         ],
       },
